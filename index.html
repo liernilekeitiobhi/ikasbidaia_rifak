@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="eu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ikastetxeko rifak sortzeko tresna">
+  <title>Rifen sortzailea · Lekitioko Institutua</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="brand">
+      <div class="logo" aria-hidden="true">LI</div>
+      <div>
+        <p class="eyebrow">LEKITIONGO INSTITUTUA</p>
+        <h1>Rifen sortzailea</h1>
+        <p class="subtitle">Prestatu zure rifak eta sortu inprimatzeko PDFa.</p>
+      </div>
+    </header>
+
+    <section class="panel">
+      <h2>Rifen datuak</h2>
+      <p class="intro">Bete datuak eta deskargatu zure rifak PDF formatuan.</p>
+
+      <form id="rifa-form">
+        <div class="field">
+          <label for="ikasturtea">Ikasturtea</label>
+          <input id="ikasturtea" name="ikasturtea" type="text" maxlength="20" required>
+          <small>Automatikoki kalkulatzen da, baina nahi baduzu alda dezakezu.</small>
+        </div>
+
+        <div class="two-columns">
+          <div class="field">
+            <label for="prezioa">Rifa bakoitzaren prezioa (€)</label>
+            <input id="prezioa" name="prezioa" type="number" min="0" max="9999" step="0.01" value="1" required>
+          </div>
+          <div class="field">
+            <label for="kopurua">Zenbat rifa sortu?</label>
+            <input id="kopurua" name="kopurua" type="number" min="1" max="100000" step="1" value="500" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="hasiera">Hasierako zenbakia</label>
+          <input id="hasiera" name="hasiera" type="number" min="0" max="999999" step="1" value="1" required>
+          <small>Aurreko rifak 0500 zenbakian amaitu baziren, idatzi 501.</small>
+        </div>
+
+        <section class="summary" aria-live="polite">
+          <h3>Laburpena</h3>
+          <div><span>Lehen rifaren zenbakia</span><strong id="lehen-zenbakia">0001</strong></div>
+          <div><span>Azken rifaren zenbakia</span><strong id="azken-zenbakia">0500</strong></div>
+          <div><span>Gehienezko diru-bilketa</span><strong id="diru-bilketa">500,00 €</strong></div>
+          <div><span>PDFko orrialde kopurua</span><strong id="orrialdeak">20</strong></div>
+          <p class="note">Rifa-orri bakoitzean 10 ale daude (2 zutabe × 5 errenkada). Aurrealdea eta atzealdea orri banatan sortzen dira.</p>
+        </section>
+
+        <p id="errorea" class="error" role="alert" hidden></p>
+        <button id="sortu" class="button" type="submit">
+          <span id="button-label">PDFa sortu eta deskargatu</span>
+          <span id="spinner" class="spinner" hidden></span>
+        </button>
+      </form>
+    </section>
+    <footer>Ikastetxeko rifen tresna · Zure nabigatzailean sortzen da PDFa</footer>
+  </main>
+</body>
+</html>
